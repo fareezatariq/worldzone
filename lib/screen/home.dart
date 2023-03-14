@@ -10,8 +10,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+var data;
   @override
   Widget build(BuildContext context) {
+    data= data!= null? data: ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       backgroundColor: Colors.blue,
       body: SafeArea(
