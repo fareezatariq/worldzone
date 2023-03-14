@@ -3,11 +3,11 @@ import 'package:worldzone/screen/home.dart';
 import 'package:worldzone/screen/location.dart';
 import 'package:worldzone/screen/loading.dart';
 void main() => runApp(MaterialApp(
-
+debugShowCheckedModeBanner: false,
   initialRoute: "/home",
   routes: {
-'/': (contect) => Loading(),
-'/home': (contect) => Home(),
-'location':(contect) => Location()
-}
+'/': (context) => Loading(),
+'/home': (context) => Home(),
+'/location':(context) => Location(),
+},
 ));

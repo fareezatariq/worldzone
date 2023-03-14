@@ -10,6 +10,12 @@ class Location extends StatefulWidget {
 class _LocationState extends State<Location> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Choose Location'),
+        centerTitle: true,
+      ),
+
+    );
   }
 }
