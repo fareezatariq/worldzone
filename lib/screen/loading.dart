@@ -8,17 +8,24 @@ class Loading extends StatefulWidget {
   State<Loading> createState() => _LoadingState();
 }
 
+
 class _LoadingState extends State<Loading> {
 
-  void setUpWorldTime()async{
-    WorldTime instances=WorldTime( flag: 'germany.png', location: 'Berlin', URL: 'Europe/Berlin');
-   await instances.getTime();
-   Navigator.pushReplacementNamed(context, '/home', arguments: {
-     'location': instances.location,
-     'flag':instances.flag,
-     'URL': instances.URL,
-     'isDayTime': instances.isDayTime
-   });
+  void setUpWorldTime() async{
+    WorldTime instance= WorldTime(location: 'Berlin', flag: 'germany.png', URL:'Europe/Berlin');
+    await instance.getTime();
+
+    Navigator.pushReplacementNamed(context, '/home', arguments: {
+      "location": instance.location,
+      "flag": instance.flag,
+      "time": instance.time,
+      "isDayTime": instance.isDayTime
+    });
+    // Navigator.pushReplacementNamed(context, '/home', arguments: {
+    //   'location': instance.location,
+    //   'flag': instance.flag,
+    //   'time': instance.time,
+    // });
   }
 
   @override
@@ -26,16 +33,17 @@ class _LoadingState extends State<Loading> {
     super.initState();
     setUpWorldTime();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[900],
-      body: Center(
-        child: SpinKitPouringHourGlassRefined(
-          color: Colors.white,
-          size: 80.0,
-        ),
-      ),
+        backgroundColor: Colors.blue[900],
+        body: Center(
+          child: SpinKitPouringHourGlassRefined(
+            color: Colors.white,
+            size: 80.0,
+          ),
+        )
     );
   }
 }
