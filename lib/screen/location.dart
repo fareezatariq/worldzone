@@ -18,6 +18,20 @@ class _LocationState extends State<Location> {
   WorldTime(location: "Seoul", flag: 'south_korea.png', URL: 'Asia/Seoul'),
   WorldTime(location: "Jakarta", flag: 'indonesia.png', URL: 'Asia/Jakarta'),
   ];
+
+  void updateTime(index)async{
+    WorldTime instance= locations[index];
+    await instance.getTime();
+    Navigator.pop(context, {
+      'location': locations[index].location,
+      'flag': locations[index].flag,
+      'URL': locations[index].URL,
+      'time': locations[index].time,
+      'isDayTime': locations[index].isDayTime
+    });
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,8 +47,9 @@ body: ListView.builder(
         child: Card(
           child: ListTile(
             onTap: (){
-
+              updateTime(index);
             },
+            title: Text(locations[index].location!),
             leading: CircleAvatar(
               backgroundImage: AssetImage('images/${locations[index].flag}'),
             ),
